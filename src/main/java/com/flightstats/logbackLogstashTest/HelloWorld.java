@@ -14,11 +14,6 @@ public class HelloWorld {
 
     public static void main(String[] args) {
 
-        // print internal state
-        LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
-        StatusPrinter.print(lc);
-
-
         Logger logger = LoggerFactory.getLogger(HelloWorld.class);
         logger.debug("Debug Message");
         logger.info("Info Message");
@@ -29,5 +24,8 @@ public class HelloWorld {
         myMap.put("name1", "value1");
         myMap.put("name2", "value2");
         logger.info("KV Pairs {}", entries(myMap));
+
+        LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
+        lc.stop();
     }
 }
